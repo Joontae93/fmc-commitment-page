@@ -1,4 +1,5 @@
 @use '../abstracts/mixins';
+@use '../abstracts/variables';
 
 form {
 	@include mixins.displayFlex(column, flex-start, stretch);
@@ -9,51 +10,14 @@ form {
 	border: 2px solid #5b5b5b;
 	border-radius: 10px;
 
-	.section {
-		border-bottom: 1px solid #545454;
-		padding: 3rem;
-		transition: background-color 0.3s ease;
+	h2 {
+		color: variables.$color-secondary;
 	}
-	.section-header {
-		margin: 0 auto 2rem auto;
-		&__headline {
-			text-transform: capitalize;
-			margin: 0 auto;
-		}
-		&__description {
-			margin: 0 auto 2rem auto;
-		}
+	label {
+		font-weight: 700;
+		color: variables.$color-primary--main;
 	}
-	.form-header {
-		padding: 2rem;
-		&__description {
-			text-align: center;
-			margin-top: 1rem;
-		}
-	}
-	.contact-info {
-		@include mixins.displayFlex;
 
-		&__fields {
-			flex: 1 1 40%;
-			@include mixins.displayFlex(column);
-			& input {
-				margin-bottom: 2rem;
-			}
-			&--first,
-			&--second {
-				@include mixins.displayFlex(column);
-				flex: 1 1 50%;
-			}
-			&:nth-child(2) {
-				border-left: 1px dashed lightgray;
-				padding-left: 1rem;
-			}
-		}
-		&__header {
-			margin-bottom: 1rem;
-		}
-	}
 	.time {
 		&__fields {
 			@include mixins.displayFlex(column);
@@ -80,32 +44,87 @@ form {
 			}
 		}
 	}
-	button {
-		padding: 1rem 2rem;
-		display: block;
-		margin: 3rem;
-		align-self: flex-end;
-		cursor: pointer;
-		border-radius: 1rem;
-		transition: all 0.3s ease;
-		&:hover,
-		&:active,
-		&:focus {
-			transform: translateY(-4px);
-			box-shadow: 2px 2px 4px rgba(black, 0.35);
+}
+.section {
+	border-bottom: 1px solid #545454;
+	padding: 3rem;
+	transition: background-color 0.3s ease;
+
+	&-header {
+		margin: 0 auto 2rem auto;
+		&__headline {
+			text-transform: capitalize;
+			margin: 0 auto;
+		}
+		&__description {
+			margin: 0 auto 2rem auto;
 		}
 	}
 }
-.active {
-	background-color: #cecece;
-}
-.thanks {
-	background-color: rgba(yellow, 0.35);
-	width: 88%;
-	padding: 4rem;
-	margin: 0 auto;
-	h2 {
-		font-size: 1.6rem;
+.form-header {
+	padding: 2rem;
+	margin-bottom: 0;
+	h2.form-header__headline {
+		color: white;
+	}
+	&__description {
 		text-align: center;
+		margin-top: 1rem;
+
+		a {
+			font-weight: 700;
+			color: white;
+		}
+	}
+}
+.contact-info {
+	@include mixins.displayFlex;
+
+	&__fields {
+		flex: 1 1 40%;
+		@include mixins.displayFlex(column);
+		& input {
+			margin-bottom: 2rem;
+		}
+		&--first,
+		&--second {
+			@include mixins.displayFlex(column);
+			flex: 1 1 50%;
+		}
+		&:nth-child(2) {
+			border-left: 1px dashed lightgray;
+			padding-left: 1rem;
+		}
+	}
+	&__header {
+		margin-bottom: 1rem;
+	}
+}
+textarea,
+input {
+	font-family: variables.$font-body;
+	font-size: 1.6rem;
+}
+button {
+	background-color: variables.$color-secondary;
+	border: 5px solid variables.$color-secondary;
+	color: white;
+	font-size: 1.2em;
+	font-weight: 700;
+	letter-spacing: 0.1rem;
+	border-radius: 1rem;
+	padding: 1rem 2rem;
+	display: block;
+	margin: 3rem;
+	align-self: flex-end;
+	cursor: pointer;
+	transition: all 0.3s ease;
+	&:hover,
+	&:active,
+	&:focus {
+		background-color: white;
+		color: variables.$color-secondary;
+		transform: translateY(-4px);
+		box-shadow: 2px 2px 4px rgba(black, 0.35);
 	}
 }

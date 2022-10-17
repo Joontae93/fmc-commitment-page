@@ -37,3 +37,28 @@ main {
 	max-width: 1200px;
 	margin: 0 auto;
 }
+
+h1,
+h2,
+h3,
+h4,
+label {
+	font-family: variables.$font-headings;
+}
+
+.active {
+	background-color: variables.$color-grey--light;
+}
+.thanks {
+	background-color: variables.$color-secondary;
+	border-radius: 1rem;
+	width: 88%;
+	padding: 4rem;
+	margin: 0 auto;
+	h2 {
+		text-transform: capitalize;
+		text-align: center;
+		font-style: italic;
+		color: white;
+	}
+}

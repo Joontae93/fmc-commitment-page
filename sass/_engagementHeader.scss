@@ -1,0 +1,28 @@
+@use './abstracts/variables';
+@use './abstracts/mixins';
+
+.engagement {
+	background-color: variables.$color-primary;
+	@include mixins.linearGradientDarken;
+	border-radius: 1rem;
+	padding: 4rem;
+	color: white;
+	&__header {
+		@include mixins.displayFlex(column, flex-start, center);
+	}
+}
+
+.goals {
+	&__display {
+		&--visual {
+			margin: 4rem 0;
+		}
+		&--text {
+			font-style: italic;
+			font-weight: 700;
+			font-size: 1.2em;
+			text-align: center;
+			letter-spacing: 0.08rem;
+		}
+	}
+}

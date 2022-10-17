@@ -1,18 +1,23 @@
 @use '../abstracts/variables';
+@use '../abstracts/mixins';
 
-#myProgress {
-	margin-top: 2rem;
-	width: 100%;
-	background-color: grey;
-	border-radius: 1rem;
-	overflow: hidden;
-}
-
-#myBar {
-	width: 10%;
-	height: 3rem;
-	background-color: variables.$color-primary;
-	text-align: center; /* To center it horizontally (if you want) */
-	line-height: 30px; /* To center it vertically */
-	color: white;
+.goals {
+	&__bar {
+		margin-top: 2rem;
+		width: 100%;
+		background-color: white;
+		border-radius: 1rem;
+		overflow: hidden;
+	}
+	&__progress {
+		@include mixins.displayFlex(row, center, center);
+		width: 10%;
+		height: 3rem;
+		background-color: variables.$color-secondary;
+		&--counter {
+			color: white;
+			margin-left: auto;
+			margin-right: 20%;
+		}
+	}
 }
