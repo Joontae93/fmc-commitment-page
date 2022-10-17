@@ -41,6 +41,7 @@ export async function makeRequest(
 			'Content-Type': 'application/json',
 		};
 		if (theData) config.body = JSON.stringify(theData);
+
 		let url;
 		switch (endpoint) {
 			case 'entries':

@@ -1,10 +1,10 @@
 import '../sass/main.scss';
-import engagement from './modules/engagement';
+import appController from './modules/controller';
+import app from './modules/controller';
 import { myCopyright } from './modules/utilities';
 
 function init() {
-	console.log(`Let's get to building!`);
-	engagement();
+	appController();
 	myCopyright();
 }
 init();
