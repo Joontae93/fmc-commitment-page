@@ -40,7 +40,9 @@ form {
 			}
 			&--frequency {
 				@extend .treasure__fields--giving;
+				flex-grow: 1;
 				margin-left: 3rem;
+				align-items: stretch;
 			}
 		}
 	}
@@ -101,10 +103,15 @@ form {
 	}
 }
 textarea,
-input {
+input,
+select {
+	border: 2px solid variables.$color-grey--light;
+	border-radius: 5px;
 	font-family: variables.$font-body;
 	font-size: 1.6rem;
+	margin-top: 5px;
 }
+
 button {
 	background-color: variables.$color-secondary;
 	border: 5px solid variables.$color-secondary;
