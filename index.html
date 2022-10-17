@@ -36,16 +36,26 @@
             <form>
                 <div class="section contact-info">
                     <div class="contact-info__fields">
-                        <label for="first">First Name</label>
-                        <input type="text" name="first" id="">
-                        <label for="last">Last Name</label>
-                        <input type="text" name="last" id="">
+                        <h3 class="contact-info__header">Your Name</h3>
+                        <div class="contact-info__fields--first">
+                            <label for="first">First Name</label>
+                            <input type="text" name="first" id="">
+                        </div>
+                        <div class="contact-info__fields--second">
+                            <label for="last">Last Name</label>
+                            <input type="text" name="last" id="">
+                        </div>
                     </div>
                     <div class="contact-info__fields">
-                        <label for="email">Email</label>
-                        <input type="email" name="email" id="">
-                        <label for="cell">Phone</label>
-                        <input type="tel" name="phone" id="">
+                        <h3 class="contact-info__header">Contact Info</h3>
+                        <div class="contact-info__fields--first">
+                            <label for="email">Email</label>
+                            <input type="email" name="email" id="">
+                        </div>
+                        <div class="contact-info__fields--second">
+                            <label for="cell">Phone</label>
+                            <input type="tel" name="phone" id="">
+                        </div>
                     </div>
                 </div>
                 <div class="section time">
@@ -74,16 +84,19 @@
                         <span class="section-header__description">description</span>
                     </div>
                     <div class="treasure__fields">
-                        <label for="dollars">Giving</label>
-                        <input type="number" name="dollars" id="">
-                    </div>
-                    <div class="treasure__fields"><label for="frequency">Frequency</label><select name="frequency"
-                            id="">
-                            <option value="1">One-Time</option>
-                            <option value="52">Weekly</option>
-                            <option value="12">Monthly</option>
-                            <option value="1">Annually</option>
-                        </select>
+                        <div class="treasure__fields--giving">
+                            <label for="dollars">Giving</label>
+                            <input type="number" name="dollars" id="">
+                        </div>
+                        <div class="treasure__fields--frequency">
+                            <label for="frequency">Frequency</label>
+                            <select name="frequency" id="frequency">
+                                <option value="1">One-Time</option>
+                                <option value="52">Weekly</option>
+                                <option value="12">Monthly</option>
+                                <option value="1">Annually</option>
+                            </select>
+                        </div>
                     </div>
                 </div>
                 <input type="button" value="Submit">

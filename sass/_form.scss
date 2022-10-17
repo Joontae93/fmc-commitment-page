@@ -6,19 +6,16 @@ form {
 .commitmentForm {
 	max-width: 48rem;
 	margin: 0 auto;
-	border: 1px solid #5b5b5b;
+	border: 2px solid #5b5b5b;
 	border-radius: 10px;
 
 	.section {
-		margin-bottom: 3rem;
-		padding: 1rem 3rem;
+		border-bottom: 1px solid #545454;
+		padding: 3rem;
 		transition: background-color 0.3s ease;
 	}
 	.section-header {
-		@include mixins.displayFlex(column);
 		margin: 0 auto 2rem auto;
-		text-align: center;
-		border-bottom: 1px solid #c3c3c3;
 		&__headline {
 			text-transform: capitalize;
 			margin: 0 auto;
@@ -29,19 +26,32 @@ form {
 	}
 	.form-header {
 		padding: 2rem;
-		margin-bottom: 0;
 		&__description {
+			text-align: center;
 			margin-top: 1rem;
 		}
 	}
 	.contact-info {
-		@include mixins.displayFlex(column);
+		@include mixins.displayFlex;
+
 		&__fields {
+			flex: 1 1 40%;
 			@include mixins.displayFlex(column);
-			margin-top: 3rem;
 			& input {
 				margin-bottom: 2rem;
 			}
+			&--first,
+			&--second {
+				@include mixins.displayFlex(column);
+				flex: 1 1 50%;
+			}
+			&:nth-child(2) {
+				border-left: 1px dashed lightgray;
+				padding-left: 1rem;
+			}
+		}
+		&__header {
+			margin-bottom: 1rem;
 		}
 	}
 	.time {
@@ -60,10 +70,13 @@ form {
 	}
 	.treasure {
 		&__fields {
-			@include mixins.displayFlex(column);
-		}
-		select {
-			option {
+			@include mixins.displayFlex;
+			&--giving {
+				@include mixins.displayFlex(column);
+			}
+			&--frequency {
+				@extend .treasure__fields--giving;
+				margin-left: 3rem;
 			}
 		}
 	}
