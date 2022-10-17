@@ -2,4 +2,6 @@
 @use './abstracts/mixins';
 @use './base';
 
-@use './form';
+@use './components/spinner';
+@use './components/form';
+@use './components/progressBar';

@@ -1,57 +1,54 @@
+import showForm from './View';
+import renderSpinner from './spinner';
 import { makeRequest, select } from './utilities';
+import View from './View';
+
+const formData = {};
 export default async function engagement() {
-	handleActiveClass();
 	try {
-		theForm();
+		// call the Form View w/ spinner
+		const theWufooForm = new View();
+
+		// call the Wufoo Data
+		await theData();
+		sumDollars(formData.entries);
+
+		// Show the Data
+		theWufooForm.showForm(formData);
+		theWufooForm.displayData(formData);
+		console.log(formData.form.RedirectMessage);
+
+		// handle submit
+		theWufooForm.onSubmit(formData.form.RedirectMessage);
 	} catch (err) {
 		console.error(err);
 	}
 }
-const form = {};
 
-async function theForm() {
+async function theData() {
 	try {
 		const data = await makeRequest();
-		form.form = data.Forms[0];
+		formData.form = data.Forms[0];
 		const fields = await makeRequest('fields');
-		form.fields = fields.Fields;
+		formData.fields = fields.Fields;
 		const entries = await makeRequest('entries');
-		form.entries = entries.Entries;
-		sumDollars(form.entries);
-		displayData();
+		formData.entries = entries.Entries;
 	} catch (err) {
 		throw new Error(err);
 	}
-}
-function handleActiveClass() {
-	const inputs = select('form input', true);
-	const textAreas = select('form textarea', true);
-	let allInputs = [];
-	inputs.forEach((el) => allInputs.push(el));
-	textAreas.forEach((el) => allInputs.push(el));
-	allInputs.forEach((el) => {
-		el.addEventListener('focusin', (ev) => {
-			if (!el.closest('.section').classList.contains('active'))
-				el.closest('.section').classList.add('active');
-		});
-		el.addEventListener('focusout', (ev) => {
-			if (el.closest('.section').classList.contains('active'))
-				el.closest('.section').classList.remove('active');
-		});
-	});
 }
 
 function sumDollars(entries) {
 	entries.forEach((el) => {
 		let sum = 0;
 		console.log(el.Field11);
-		sum += Number(el.Field522);
-		form.total = sum;
+		switch (el.Field11) {
+			case 'monthly':
+				sum += Number(el.Field522) * 12;
+				break;
+			default:
+				sum += Number(el.Field522);
+		}
+		formData.total = sum.toFixed(2);
 	});
-}
-function displayData() {
-	const description = select('.form-header__description');
-	description.innerHTML = form.form.Description;
-	const subs = select('.goals__counter--submission');
-	subs.innerHTML = form.entries.length;
 }

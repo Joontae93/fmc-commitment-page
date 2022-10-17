@@ -1,40 +1,18 @@
-<!DOCTYPE html>
-<html lang="en">
+import { select } from './utilities';
 
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>FMC Commitment Page</title>
-    <link rel="stylesheet" href="./sass/main.scss">
-    <script src="./src/index.js" type="module"></script>
-</head>
-
-<body>
-    <header>
-        <h1>FMC Commitment Page</h1>
-        <span class="x-subheadline">Some words about generosity.</span>
-    </header>
-    <main>
-        <section class="engagement">
-            <h2 class="engagement__headline">Let's reach our 2023 Goals</h2>
-            <ul role="list">
-                <li>200 Form Submissions</li>
-            </ul>
-            <div class="goals goals__display">
-                <div class="goals__display--text">
-                </div>
-                <div class="goals__display--visual">
-                    <div id="myProgress">
-                        <div id="myBar">10%</div>
-                    </div>
-                </div>
-            </div>
-        </section>
-        <section class="commitmentForm">
-            <header class="form-header section-header">
+export default class View {
+	form = select('.commitmentForm');
+	constructor() {
+		this.renderSpinner();
+	}
+	renderSpinner() {
+		this.form.innerHTML = `<div class="lds-dual-ring"></div>`;
+	}
+	showForm(formData) {
+		console.log(formData);
+		this.form.innerHTML = `<header class="form-header section-header">
                 <h2 class="form-header__headline section-header__headline">Estimate of Giving for 2023</h2>
-                <span class="form-header__description section-header__description">Description</span>
+                <span class="form-header__description section-header__description">${formData.form.Description}</span>
             </header>
             <form>
                 <div class="section contact-info">
@@ -102,14 +80,39 @@
                         </div>
                     </div>
                 </div>
-                <input type="submit" value="Submit" id="submitBtn">
-            </form>
-        </section>
-    </main>
-    <footer>
-        <div id="copyright"></div>
-    </footer>
-
-</body>
-
-</html>
+                <button type="submit" id="submit">Submit</button>
+                </form>
+                `;
+	}
+	handleActiveClass() {
+		const inputs = select('form input', true);
+		const textAreas = select('form textarea', true);
+		let allInputs = [];
+		inputs.forEach((el) => allInputs.push(el));
+		textAreas.forEach((el) => allInputs.push(el));
+		allInputs.forEach((el) => {
+			el.addEventListener('focusin', (ev) => {
+				if (!el.closest('.section').classList.contains('active'))
+					el.closest('.section').classList.add('active');
+			});
+			el.addEventListener('focusout', (ev) => {
+				if (el.closest('.section').classList.contains('active'))
+					el.closest('.section').classList.remove('active');
+			});
+		});
+	}
+	displayData(formData) {
+		const goalsText = select('.goals__display--text');
+		goalsText.innerHTML = `$${formData.total} dollars pledged by ${
+			formData.entries.length
+		} ${formData.entries.length > 1 ? 'households' : 'household'}`;
+	}
+	onSubmit(string) {
+		const message = `<div class="thanks"><h2>${string}</h2></div>`;
+		this.form.addEventListener('submit', (ev) => {
+			ev.preventDefault();
+			console.log(ev);
+			this.form.insertAdjacentHTML('afterend', message);
+		});
+	}
+}

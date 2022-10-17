@@ -1,11 +1,11 @@
-@use './abstracts/mixins';
+@use '../abstracts/mixins';
 
 form {
 	@include mixins.displayFlex(column, flex-start, stretch);
 }
 .commitmentForm {
 	max-width: 48rem;
-	margin: 0 auto;
+	margin: 3rem auto;
 	border: 2px solid #5b5b5b;
 	border-radius: 10px;
 
@@ -80,19 +80,32 @@ form {
 			}
 		}
 	}
-	input[type='button'] {
+	button {
 		padding: 1rem 2rem;
 		display: block;
 		margin: 3rem;
 		align-self: flex-end;
 		cursor: pointer;
+		border-radius: 1rem;
+		transition: all 0.3s ease;
 		&:hover,
 		&:active,
 		&:focus {
+			transform: translateY(-4px);
 			box-shadow: 2px 2px 4px rgba(black, 0.35);
 		}
 	}
 }
 .active {
 	background-color: #cecece;
+}
+.thanks {
+	background-color: rgba(yellow, 0.35);
+	width: 88%;
+	padding: 4rem;
+	margin: 0 auto;
+	h2 {
+		font-size: 1.6rem;
+		text-align: center;
+	}
 }
