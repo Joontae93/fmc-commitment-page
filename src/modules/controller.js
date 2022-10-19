@@ -3,8 +3,6 @@ import View from './View';
 
 export default async function appController() {
 	try {
-		// call the Form View w/ spinner
-
 		// call the Wufoo Data
 		await model.theData();
 

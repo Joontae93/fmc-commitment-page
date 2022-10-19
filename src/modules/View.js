@@ -39,11 +39,15 @@ class View {
 	 * @param {number} length the total number of entries
 	 */
 	#displayPledgeDollars(total, length) {
-		this.goalsText.innerHTML = `${total.toLocaleString('en-US', {
-			style: 'currency',
-			currency: 'USD',
-		})} pledged by ${length} ${length > 1 ? 'households' : 'household'}`;
-		this.#updateProgress(length);
+		if (length > 0) {
+			this.goalsText.innerHTML = `${total.toLocaleString('en-US', {
+				style: 'currency',
+				currency: 'USD',
+			})} pledged by ${length} ${length > 1 ? 'households' : 'household'}`;
+			this.#updateProgress(length);
+		} else {
+			this.goalsText.innerHTML = `Looks like you're the first to fill this form out. Nice!`;
+		}
 	}
 	/** Updates progress bar based on number of entries received
 	 * @param {number} entries the number of entries.

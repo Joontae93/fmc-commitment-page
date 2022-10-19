@@ -55,7 +55,7 @@ export default function formMarkup(formData) {
                     <div class="treasure__fields">
                         <div class="treasure__fields--giving">
                             <label for="dollars">${formData.fields[6].Title}</label>
-                            <input required type="number" name="dollars" id="dollars" placeholder="85.50" step="0.01">
+                            <input type="number" name="dollars" id="dollars" placeholder="85.50" step="0.01">
                         </div>
                         <div class="treasure__fields--frequency">
                             <label for="frequency">Frequency</label>

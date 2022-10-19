@@ -38,9 +38,8 @@ export async function makeRequest(
 			},
 			method: `GET`,
 			timeout: 5000,
-			'Content-Type': 'application/json',
 		};
-		if (theData) config.body = JSON.stringify(theData);
+		if (theData) config.body = new URLSearchParams(theData);
 
 		let url;
 		switch (endpoint) {

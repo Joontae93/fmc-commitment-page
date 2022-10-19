@@ -1,7 +1,10 @@
 import { makeRequest } from './utilities';
 
 class Model {
-	formData = {};
+	formData = {
+		total: 0,
+		length: 0,
+	};
 	constructor() {}
 	theData = async function () {
 		try {
@@ -42,12 +45,13 @@ class Model {
 			Field522: data[7].giving, // dollars
 			Field11: data[7].freq, // freq
 		};
-		console.log(JSON.stringify(postData));
 		try {
 			const res = await makeRequest('entries', 'POST', postData);
-			if (res.Success != 1) throw new Error(res);
+			if (res.Success === 0 || (res.Success === 1 && res.ErrorText))
+				throw new Error(res.ErrorText);
 		} catch (err) {
 			console.error(err);
+			alert('Oops. Something went wrong.');
 		}
 	};
 }
