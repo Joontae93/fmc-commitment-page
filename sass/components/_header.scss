@@ -15,9 +15,9 @@
 	}
 	&__text {
 		@include mixins.displayFlex(column, center, stretch);
-		margin: 2rem 0;
+		margin: 2rem;
 		&--nav {
-			margin-top: 2rem;
+			margin-top: 3rem;
 			a {
 				color: white;
 				text-transform: uppercase;

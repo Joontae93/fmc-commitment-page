@@ -9,11 +9,6 @@ export function select(selector, all = false) {
 		: document.querySelectorAll(selector);
 }
 
-export function myCopyright() {
-	const copyright = document.getElementById('copyright');
-	const thisYear = new Date().getFullYear();
-	copyright.innerHTML = `<p>&copy; ${thisYear} First Methodist Carrollton <br/> Filling Every Neighborhood with the Good News of God's Love.</p>`;
-}
 const API_URL = `https://firstchurchcarrollton.wufoo.com/api/v3/forms`;
 const FORM_ID = 'rt2tdqd0lcp3yx';
 /**
