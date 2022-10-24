@@ -12,7 +12,6 @@ class View {
 	};
 	constructor() {
 		this.renderSpinner(this.form);
-		this.renderSpinner(this.responseContainer);
 	}
 
 	renderSpinner(el) {
@@ -26,9 +25,12 @@ class View {
 	showResponses(responses) {
 		this.#getResponses(responses);
 		this.responseContainer.innerHTML = '';
-		const allResponses = Object.values(this.entries);
+		const allResponses = [];
+		this.entries.time.forEach((el) => allResponses.push(el));
+		this.entries.talent.forEach((el) => allResponses.push(el));
+		if (allResponses.length === 0) return;
 		setInterval(() => {
-			const entry = this.#getRandomResponse();
+			const entry = this.#getRandomResponse(allResponses);
 			let response = `<div class="response"><p class="response__text">"${allResponses[entry]}"</p></div>`;
 			this.responseContainer.innerHTML = response;
 		}, 3000);
@@ -45,9 +47,8 @@ class View {
 			}
 		});
 	}
-	#getRandomResponse() {
-		const min = 1;
-		const max = Object.values(this.entries).length;
+	#getRandomResponse(all) {
+		const max = all.length;
 		return Math.floor(Math.random() * max);
 	}
 

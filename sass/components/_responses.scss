@@ -2,12 +2,12 @@
 @use '../abstracts/variables';
 
 .responses {
-	@include mixins.linearGradientDarken;
 	border-radius: 1rem;
-	background-color: variables.$color-secondary;
 	overflow: hidden;
-	padding: 4rem;
 	.response {
+		padding: 4rem;
+		background-color: variables.$color-secondary;
+		@include mixins.linearGradientDarken;
 		@include mixins.displayFlex(column, center, center);
 		color: white;
 		&__text {
