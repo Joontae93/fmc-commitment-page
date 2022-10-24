@@ -5,16 +5,50 @@ class View {
 	form = select('.commitmentForm');
 	goalsText = select('.goals__display--text');
 	allInputs = [];
+	responseContainer = select('.responses');
+	entries = {
+		time: [],
+		talent: [],
+	};
 	constructor() {
-		this.renderSpinner();
+		this.renderSpinner(this.form);
+		this.renderSpinner(this.responseContainer);
 	}
-	renderSpinner() {
-		this.form.innerHTML = `<div class="lds-dual-ring"></div>`;
+
+	renderSpinner(el) {
+		el.innerHTML = `<div class="lds-dual-ring"></div>`;
 	}
 	showForm(formData) {
 		this.form.innerHTML = formMarkup(formData);
 		this.#displayPledgeDollars(formData.total, formData.entries.length);
 		this.#handleActiveClass();
+	}
+	showResponses(responses) {
+		this.#getResponses(responses);
+		this.responseContainer.innerHTML = '';
+		const allResponses = Object.values(this.entries);
+		setInterval(() => {
+			const entry = this.#getRandomResponse();
+			let response = `<div class="response"><p class="response__text">"${allResponses[entry]}"</p></div>`;
+			this.responseContainer.innerHTML = response;
+		}, 3000);
+	}
+	#getResponses(responses) {
+		responses.forEach((entry) => {
+			const time = entry.Field527;
+			const talent = entry.Field528;
+			if (time.length > 0) {
+				this.entries.time.push(time);
+			}
+			if (talent.length > 0) {
+				this.entries.talent.push(talent);
+			}
+		});
+	}
+	#getRandomResponse() {
+		const min = 1;
+		const max = Object.values(this.entries).length;
+		return Math.floor(Math.random() * max);
 	}
 
 	/** Toggles '.active' CSS class to highlight which fields are being edited. */

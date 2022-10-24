@@ -8,7 +8,7 @@ export default async function appController() {
 
 		// Show the Data
 		View.showForm(model.formData);
-		// View.displayPledgeDollars(model.formData);
+		View.showResponses(model.formData.entries);
 
 		// handle submit
 		View.onSubmit(model.formData, model.submitData);
