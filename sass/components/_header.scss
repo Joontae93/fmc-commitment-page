@@ -1,0 +1,29 @@
+@use '../abstracts/mixins';
+@use '../abstracts/variables';
+
+.header {
+	@include mixins.displayFlex(row, space-around, center);
+	background-color: variables.$color-primary;
+	@include mixins.linearGradientDarken(165deg);
+	color: white;
+	&__img {
+		&--img {
+			max-width: 30rem;
+			object-fit: contain;
+			margin-bottom: 2rem;
+		}
+	}
+	&__text {
+		@include mixins.displayFlex(column, center, stretch);
+		margin: 2rem 0;
+		&--nav {
+			margin-top: 2rem;
+			a {
+				color: white;
+				text-transform: uppercase;
+				font-weight: 700;
+				letter-spacing: 0.2rem;
+			}
+		}
+	}
+}

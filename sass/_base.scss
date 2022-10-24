@@ -22,14 +22,12 @@ main,
 footer {
 	padding: 6.5rem 0;
 }
-header {
+
+footer {
+	@include mixins.displayFlex(column, center, center);
 	background-color: variables.$color-primary;
 	@include mixins.linearGradientDarken(165deg);
 	color: white;
-	@include mixins.displayFlex(column, center, center);
-}
-footer {
-	@extend header;
 	background-color: variables.$color-grey;
 }
 main {
