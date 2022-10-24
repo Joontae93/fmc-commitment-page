@@ -1,8 +1,5 @@
 export default function formMarkup(formData) {
-	const markup = `<header class="form-header section-header">
-                <h2 class="form-header__headline section-header__headline">Estimate of Giving for 2023</h2>
-                <span class="form-header__description section-header__description">${formData.form.Description}</span>
-            </header>
+	const markup = `
             <form>
                 <div class="section contact-info">
                     <div class="contact-info__fields">
@@ -24,7 +21,7 @@ export default function formMarkup(formData) {
                         </div>
                         <div class="contact-info__fields--second">
                             <label for="cell">Phone</label>
-                            <input required type="tel" name="phone" id="phone" inputtype="numeric">
+                            <input required type="tel" name="phone" id="phone" inputtype="numeric" >
                         </div>
                     </div>
                 </div>
@@ -35,7 +32,7 @@ export default function formMarkup(formData) {
                     </div>
                     <div class="time__fields">
                         <label for="time-field">Your response</label>
-                        <textarea name="time-field" id="time-field" cols="30" rows="10"></textarea>
+                        <textarea placeholder="&#34;In 2023, I commit to attending worship more often...&#34;&#10;&#34;I&#39;m committing to attend more events...&#34;" name="time-field" id="time-field" cols="30" rows="10"></textarea>
                     </div>
                 </div>
                 <div class="section talent">
@@ -45,7 +42,7 @@ export default function formMarkup(formData) {
                     </div>
                     <div class="talent__fields">
                         <label for="talent-field">Your response</label>
-                        <textarea name="talent-field" id="talent-field" cols="30" rows="10"></textarea>
+                        <textarea name="talent-field" id="talent-field" placeholder="&#34;In 2023, I commit to using my gift of [blank] in ministry...&#34;&#10;&#34;I&#39;d like to grow my talents by volunteering with...&#34;" cols="30" rows="10"></textarea>
                     </div>
                 </div>
                 <div class="section treasure">
