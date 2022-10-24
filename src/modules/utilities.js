@@ -26,21 +26,15 @@ export async function makeRequest(
 ) {
 	try {
 		const config = {
-			mode: 'cors',
 			headers: {
 				Authorization: `Basic ${window.btoa(
 					process.env.API_KEY + ':footastic',
 				)}`,
-				'Content-Type': 'application/json',
-				'Access-Control-Allow-Origin': 'http://localhost:1234',
 			},
 			method: `GET`,
 			timeout: 5000,
 		};
-		if (theData) {
-			config.body = new URLSearchParams(theData);
-			config.headers['Content-Type'] = 'application/x-www-form-urlencoded';
-		}
+		if (theData) config.body = new URLSearchParams(theData);
 
 		let url;
 		switch (endpoint) {
@@ -51,7 +45,7 @@ export async function makeRequest(
 				url = `${API_URL}/${FORM_ID}/fields.json/`;
 				break;
 			default:
-				url = `${API_URL}/${FORM_ID}.json`;
+				url = `${API_URL}/${FORM_ID}.json/`;
 		}
 		if (method) {
 			config.method = method;
