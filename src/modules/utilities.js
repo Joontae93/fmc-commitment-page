@@ -54,5 +54,7 @@ export async function makeRequest(
 		const data = await res.json();
 		if (!res.ok) throw new Error(`${data.message} (${res.status})`);
 		return returnAll ? [res, data, method] : data;
-	} catch (error) {}
+	} catch (error) {
+		console.error(error);
+	}
 }
