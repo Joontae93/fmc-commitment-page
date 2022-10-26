@@ -1,7 +1,7 @@
 {
-  "name": "kj-project-boilerplate",
+  "name": "fmc-commitment-page",
   "version": "1.0.0",
-  "description": "A boilerplate for KJ's projects",
+  "description": "A compelling giving platform for FMC's 2023 Stewardship campaign",
   "scripts": {
     "start": "parcel index.html",
     "build": "parcel build index.html"
