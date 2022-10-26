@@ -2,6 +2,7 @@ import formMarkup from './formMarkup';
 import { select } from './utilities';
 
 class View {
+	mobile = false;
 	form = select('.commitmentForm');
 	goalsText = select('.goals__display--text');
 	allInputs = [];
@@ -11,9 +12,14 @@ class View {
 		talent: [],
 	};
 	constructor() {
+		if (screen.width < 400 || window.innerWidth < 400) this.mobile = true;
 		this.renderSpinner(this.form);
 	}
 
+	mobileRedirect() {
+		window.location.href =
+			'https://firstchurchcarrollton.wufoo.com/forms/estimate-of-giving-for-2023';
+	}
 	renderSpinner(el) {
 		el.innerHTML = `<div class="lds-dual-ring"></div>`;
 	}
