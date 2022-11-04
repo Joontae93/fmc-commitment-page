@@ -18,7 +18,7 @@ class View {
 
 	mobileRedirect() {
 		window.location.href =
-			'https://firstchurchcarrollton.wufoo.com/forms/estimate-of-giving-for-2023';
+			'https://firstchurchcarrollton.wufoo.com/forms/rt2tdqd0lcp3yx/';
 	}
 	renderSpinner(el) {
 		el.innerHTML = `<div class="lds-dual-ring"></div>`;
