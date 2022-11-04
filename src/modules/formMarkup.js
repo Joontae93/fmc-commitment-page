@@ -6,22 +6,22 @@ export default function formMarkup(formData) {
                         <h3 class="contact-info__header">Your Name</h3>
                         <div class="contact-info__fields--first">
                             <label for="first">First Name</label>
-                            <input required type="text" name="first" id="">
+                            <input required type="text" name="first" id="first">
                         </div>
                         <div class="contact-info__fields--second">
                             <label for="last">Last Name</label>
-                            <input required type="text" name="last" id="">
+                            <input required type="text" name="last" id="last">
                         </div>
                     </div>
                     <div class="contact-info__fields">
                         <h3 class="contact-info__header">Contact Info</h3>
                         <div class="contact-info__fields--first">
                             <label for="email">Email</label>
-                            <input required type="email" name="email" id="">
+                            <input required type="email" name="email" id="email">
                         </div>
                         <div class="contact-info__fields--second">
                             <label for="cell">Phone</label>
-                            <input required type="tel" name="phone" id="phone" inputtype="numeric" >
+                            <input required type="tel" name="phone" id="cell" inputtype="numeric" >
                         </div>
                     </div>
                 </div>

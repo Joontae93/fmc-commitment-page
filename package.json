@@ -1,6 +1,6 @@
 {
   "name": "fmc-commitment-page",
-  "version": "1.1",
+  "version": "1.1.1",
   "description": "A compelling giving platform for FMC's 2023 Stewardship campaign",
   "scripts": {
     "start": "parcel index.html",
