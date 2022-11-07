@@ -94,7 +94,8 @@ class View {
 	 * @param {number} entries the number of entries.
 	 */
 	#updateProgress(entries) {
-		const toGoal = (entries / 200) * 100;
+		const toGoal = Math.round((entries / 200) * 100);
+		console.log(toGoal);
 		const barFill = document.getElementById('myBar');
 		const count = select('.goals__progress--counter');
 		if (entries >= 200) {
