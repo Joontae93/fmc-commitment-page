@@ -51,7 +51,6 @@ class Model {
 				throw new Error(res.ErrorText);
 		} catch (err) {
 			console.error(err);
-			alert('Oops. Something went wrong.');
 		}
 	};
 }
