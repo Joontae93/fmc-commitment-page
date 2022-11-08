@@ -1,13 +1,13 @@
 import model from './model';
+import { timeout } from './utilities';
 import View from './View';
 
 export default async function appController() {
 	try {
 		// Check if Mobile
-		const mobile = View.mobile;
-		if (!mobile) {
+		if (!View.mobile) {
 			// call the Wufoo Data
-			await model.theData();
+			await Promise.race([model.theData(), timeout()]);
 
 			// Show the Data
 			View.showForm(model.formData);
@@ -19,6 +19,7 @@ export default async function appController() {
 			View.mobileRedirect();
 		}
 	} catch (err) {
+		View.showError(err);
 		console.error(err);
 	}
 }

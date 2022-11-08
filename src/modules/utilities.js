@@ -58,3 +58,11 @@ export async function makeRequest(
 		console.error(error);
 	}
 }
+
+export function timeout() {
+	return new Promise(function (_, reject) {
+		setTimeout(function () {
+			reject(new Error('Request took too long!'));
+		}, 7000);
+	});
+}

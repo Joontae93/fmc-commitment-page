@@ -1,6 +1,6 @@
 {
   "name": "fmc-commitment-page",
-  "version": "1.1.2",
+  "version": "1.2",
   "description": "A compelling giving platform for FMC's 2023 Stewardship campaign",
   "scripts": {
     "start": "parcel index.html",
@@ -12,5 +12,9 @@
     "@parcel/transformer-sass": "^2.7.0",
     "dotenv": "^16.0.3",
     "parcel": "^2.7.0"
+  },
+  "dependencies": {
+    "core-js": "^3.26.0",
+    "regenerator-runtime": "^0.13.10"
   }
 }

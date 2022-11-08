@@ -11,14 +11,15 @@ class View {
 		time: [],
 		talent: [],
 	};
+	wufooFormURL =
+		'https://firstchurchcarrollton.wufoo.com/forms/rt2tdqd0lcp3yx/';
 	constructor() {
 		if (screen.width < 400 || window.innerWidth < 400) this.mobile = true;
 		this.renderSpinner(this.form);
 	}
 
 	mobileRedirect() {
-		window.location.href =
-			'https://firstchurchcarrollton.wufoo.com/forms/rt2tdqd0lcp3yx/';
+		window.location.href = this.wufooFormURL;
 	}
 	renderSpinner(el) {
 		el.innerHTML = `<div class="lds-dual-ring"></div>`;
@@ -27,6 +28,9 @@ class View {
 		this.form.innerHTML = formMarkup(formData);
 		this.#displayPledgeDollars(formData.total, formData.entries.length);
 		this.#handleActiveClass();
+	}
+	showError(error) {
+		this.form.innerHTML = `<div style="text-align:center"><p>We've received the following error:<br> <span class="error" style="background-color:rgba(255,0,0,.55);padding:1rem;display:inline-block">${error}</span></p><p><a href="${this.wufooFormURL}">Please click here</a> to fill out the form a different way.</p></div>`;
 	}
 	showResponses(responses) {
 		this.#getResponses(responses);
@@ -95,7 +99,6 @@ class View {
 	 */
 	#updateProgress(entries) {
 		const toGoal = Math.round((entries / 200) * 100);
-		console.log(toGoal);
 		const barFill = document.getElementById('myBar');
 		const count = select('.goals__progress--counter');
 		if (entries >= 200) {
