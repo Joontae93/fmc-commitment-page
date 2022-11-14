@@ -14,7 +14,12 @@ class View {
 	wufooFormURL =
 		'https://firstchurchcarrollton.wufoo.com/forms/rt2tdqd0lcp3yx/';
 	constructor() {
-		if (screen.width < 400 || window.innerWidth < 400) this.mobile = true;
+		if (
+			screen.width < 400 ||
+			window.innerWidth < 400 ||
+			navigator.userAgent.includes('Mobi')
+		)
+			this.mobile = true;
 		this.renderSpinner(this.form);
 	}
 
